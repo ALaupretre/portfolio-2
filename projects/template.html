@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TEMPLATE</title>
+	<link rel="stylesheet" href="template-style.css">
+</head>
+
+<body>
+	<div id="canvas-container">
+
+		<canvas id="my-canvas">
+		</canvas>
+		<div id="info-box">
+			<h2 id="title">TITLE</h2>
+			<p id="description">Un autre exmple de 3d implicite complètement différent des cubes du Projet 02.<br> On
+				génère des couples de
+				points diametralements oposés qui serviront de point 1 et 3 pour créer une courbe quadratique de
+				Bézier. Le point 2 est
+				selui qui donne une impression de 3D au canvas, il joue le rôle d'un point de fuite.</p><br>
+			<a href="http://">Voir le code (GitHub)</a><br><br>
+			<a id="prev-link" href="#">Précédent</a>
+			<a id="next-link" href="#">Suivant</a>
+
+
+		</div>
+	</div>
+	<div id="palette">
+	</div>
+	<script id="canvas-script"></script>
+	<script src="common.js" onload="loadCanvasScript()"></script>
+</body>
+
+</html>

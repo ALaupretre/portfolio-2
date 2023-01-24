@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
+:root {
+	/* --bg: #474543;
+	--primary: #ffffff; */
+	--bg: #CACFDA;
+	--primary: #000000;
+	--margin-l: 64px;
+	--margin-s: 40px;
+}
+
+* {
+	box-sizing: border-box;
+	font-weight: normal;
+}
+
+body {
+	font-family: 'Questrial', sans-serif;
+	background: var(--bg);
+	color: var(--primary);
+	margin: 0;
+	font-size: 24px;
+	overflow-x: hidden;
+}
+
+h1 {
+	margin: 83px 180px;
+	font-size: 108px;
+}
+
+h2 {
+	margin: 1rem 0px;
+	font-size: 40px;
+}
+
+.section {
+	display: flex;
+	border-top: 2px var(--primary) solid;
+}
+
+.img-content {
+	border-right: 2px var(--primary) solid;
+}
+
+.text-content {
+	flex-grow: 1;
+	padding: var(--margin-s) var(--margin-l) var(--margin-s) var(--margin-s)
+}
+
+.canvas-img {
+	max-width: 40vh;
+	margin: var(--margin-l);
+}
+
+hr {
+	border: 1px solid var(--primary);
+	margin: 0 calc(-1* var(--margin-l)) 0 calc(-1* var(--margin-s));
+}
+
+.canvas-selectors-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	/* REMOVE JUSTIFY WHEN MEDIA < ? */
+	width: 100%
+}
+
+
+
+.canvas-selector {
+	margin: 0;
+	padding: 3px 10px;
+	flex-grow: 1;
+	text-align: center;
+	transition: .4s ease-out
+}
+
+.canvas-selector:hover {
+	cursor: pointer;
+	background: var(--primary);
+	color: var(--bg)
+}
+
+.canvas-selector.active {
+	background: var(--primary);
+	color: var(--bg)
+}
+
+.go-to {
+	margin: auto 0 0 auto;
+	width: 300px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transition: .3s ease
+}
+
+.canvas-selected {
+	display: flex;
+	flex-direction: column;
+
+}
+
+.canvas-selected .flex-item {}
+
+.canvas-selected:hover .go-to {
+	padding-left: 50px;
+}
+
+.canvas-selected:hover {
+	cursor: pointer;
+}
+
+.go-to svg {
+	margin: 0;
+	width: 1em;
+}

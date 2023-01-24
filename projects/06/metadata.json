@@ -1,0 +1,4 @@
+{
+	"title": "Courbes Quadratiques de Bézier",
+	"description": "Example de 3d implicite différent du Projet 02. Ici, on genere des couples de points diametralements oposés qui serviront de point 1 et 3 pour créer une courbe quadratique de Bézier. Le point 2 est celui qui donne une impression de 3D au canvas, il prend le rôle d'un point de fuite."
+}

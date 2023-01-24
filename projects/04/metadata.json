@@ -1,0 +1,4 @@
+{
+	"title": "Pluie de Cristaux",
+	"description": "On peut obtenir les données d'une image via la méthode getImageData(), cela nous donne un objet qui comprend les valeurs rgb de chaque pixel. Ainsi, il est possible d'affecter les propriétés d'éléments du canvas en fonction de ces valeurs."
+}

@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
+body {
+	font-family: 'Questrial', sans-serif;
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: black;
+}
+
+
+#canvas-container {
+	position: relative;
+	overflow: hidden;
+}
+
+#my-canvas {
+	background: rgb(38, 255, 0);
+}
+
+#info-box {
+	padding: 0 1em 2em;
+	position: absolute;
+	max-width: 100%;
+	top: 0;
+	background: rgba(255, 255, 255, 0);
+	mix-blend-mode: difference;
+	color: black;
+	transition: background .3s ease;
+}
+
+#title {
+	cursor: pointer;
+	font-size: 2rem;
+	color: white;
+	text-align: center;
+	opacity: .2;
+	margin-bottom: 100vh;
+	transition: .3s ease-out;
+}
+
+#title:hover {
+	opacity: 1;
+}
+
+#info-box.active {
+	background: rgba(255, 255, 255, 1);
+	transform: translateY(0);
+	mix-blend-mode: normal;
+	opacity: 1
+}
+
+#info-box.active #title {
+	color: black;
+	margin-bottom: 2em;
+	opacity: 1;
+}
+
+#palette {
+	position: absolute;
+	bottom: 10px;
+	opacity: .1
+}
+
+#palette:hover {
+	opacity: 1;
+}
