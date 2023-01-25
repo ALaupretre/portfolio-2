@@ -10,6 +10,10 @@
 	--margin-s: 40px;
 }
 
+html {
+	scroll-behavior: smooth !important;
+}
+
 * {
 	box-sizing: border-box;
 	font-weight: normal;
