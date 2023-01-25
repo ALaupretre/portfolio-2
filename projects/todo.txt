@@ -2,4 +2,6 @@ start gallery
 
 git push find best idea repo (?ask chatgpt)
 
-find way to have background in screenshots (not mandatory don't spend +1h)
+ have default canvas selected ( maybe by using active instead of clicked ? ) remeber that local storage has nothing prior to clicking right now
+
+ github link dynamic

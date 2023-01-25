@@ -10,6 +10,7 @@ class Point {
 		this.z = z;
 	}
 
+	//used for construction only
 	draw() {
 		ctx.fillStyle = "red";
 		ctx.beginPath();
@@ -18,7 +19,7 @@ class Point {
 	}
 }
 
-//vanishing point
+//vanishing point, middle of canvas by default
 const vPoint = new Point(canvasSize / 2, canvasSize / 2, 0);
 
 const perspectiveFactor = 1 / canvasSize;
@@ -134,9 +135,8 @@ class Cube {
 		ctx.lineTo(Dp.x, Dp.y);
 		ctx.closePath();
 
-		ctx.fill(); // this will fill the front face with the current fill style
+		ctx.fill();
 		ctx.stroke();
-		// and if you want edges you can call the drawPoint function
 		ctx.restore();
 	}
 

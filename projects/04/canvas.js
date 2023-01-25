@@ -3,7 +3,6 @@ setCanvasBackground(palette[0]);
 const img = new Image();
 img.src = "04/dancer.png";
 
-
 ctx.globalCompositeOperation = "lighter";
 
 let brightnessArray = [];
@@ -47,9 +46,8 @@ class Particle {
 		ctx.rect(this.x, this.y, this.width, this.height);
 		ctx.fill();
 	}
-
-
 }
+
 img.onload = function () {
 	ctx.drawImage(img, margin, margin, canvas.width - margin * 2, canvas.height - margin * 2);
 	const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -69,7 +67,6 @@ img.onload = function () {
 
 	}
 
-
 	const animate = () => {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		particlesArray.forEach(particle => {
@@ -78,6 +75,7 @@ img.onload = function () {
 		});
 		requestAnimationFrame(animate);
 	};
+
 	animate();
 };
 
@@ -86,6 +84,4 @@ function scale(number, inMin, inMax, outMin, outMax) {
 	return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
 }
 
-// canvas.width = window.innerWidth;
-// canvas.height = window.innerHeight;
 

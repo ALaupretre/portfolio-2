@@ -3,7 +3,8 @@
 :root {
 	/* --bg: #474543;
 	--primary: #ffffff; */
-	--bg: #CACFDA;
+	/* --bg: #CACFDA; */
+	--bg: #FFFFFF;
 	--primary: #000000;
 	--margin-l: 64px;
 	--margin-s: 40px;
@@ -38,13 +39,16 @@ h2 {
 	border-top: 2px var(--primary) solid;
 }
 
-.img-content {
-	border-right: 2px var(--primary) solid;
-}
-
 .text-content {
 	flex-grow: 1;
 	padding: var(--margin-s) var(--margin-l) var(--margin-s) var(--margin-s)
+}
+
+/*************** CREATIVE CODING ******************/
+/*************** CREATIVE CODING ******************/
+/*************** CREATIVE CODING ******************/
+#creative-coding .img-content {
+	border-right: 2px var(--primary) solid;
 }
 
 .canvas-img {
@@ -92,13 +96,17 @@ hr {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	transition: .3s ease
+	transition: padding .3s ease
 }
 
 .canvas-selected {
 	display: flex;
 	flex-direction: column;
 
+}
+
+#creative-coding .img-content {
+	cursor: pointer;
 }
 
 .canvas-selected .flex-item {}
@@ -114,4 +122,60 @@ hr {
 .go-to svg {
 	margin: 0;
 	width: 1em;
+}
+
+/*************** FRACTALES 3D ******************/
+/*************** FRACTALES 3D ******************/
+/*************** FRACTALES 3D ******************/
+#fractales-3d .img-content {
+	border-left: 2px var(--primary) solid;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#fractales-3d .img-content img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+#fractales-3d .text-content {}
+
+.accordion-content {
+	overflow: hidden;
+	border-top: 2px solid var(--primary);
+
+}
+
+.panel-heading {
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+}
+
+.panel-body {
+	max-height: 0;
+	transition: max-height 0.4s ease;
+}
+
+.accordion-content.active .panel-body {
+	max-height: 100vh;
+	transition: max-height 1.5s ease-out;
+}
+
+.expand-retract {
+	opacity: 1;
+	transition: opacity .5s
+}
+
+.accordion-content.active .panel-heading .expand-retract {
+	opacity: 0;
+}
+
+.panel-body:hover {
+	cursor: pointer
+}
+
+.panel-body:hover .go-to {
+	padding-left: 50px;
 }

@@ -4,27 +4,29 @@ function loadCanvasScript() {
 	canvasScript.src = relativePath + "/canvas.js";
 }
 
+const githubLink = document.getElementById("github-link");
+const prevLink = document.getElementById("prev-link");
+const nextLink = document.getElementById("next-link");
 
-var prevLink = document.getElementById("prev-link");
-var nextLink = document.getElementById("next-link");
+const currentCanvas = localStorage.getItem("currentCanvas");
+const currentIndex = parseInt(currentCanvas.substring(2));
+const currentIndexString = currentIndex.toString().padStart(2, "0");
+githubLink.href = `https://github.com/ALaupretre/portfolio-2/blob/main/projects/${currentIndexString}/canvas.js`;
 
-prevLink.addEventListener("click", function () {
-	var currentCanvas = localStorage.getItem("currentCanvas");
-	var currentIndex = parseInt(currentCanvas.substring(2));
+prevLink.addEventListener("click", () => {
 	if (currentIndex > 1) {
-		var prevIndex = (currentIndex - 1).toString().padStart(2, "0");
-		localStorage.setItem("currentCanvas", "./" + prevIndex);
+		const prevIndex = (currentIndex - 1).toString().padStart(2, "0");
+		localStorage.setItem("currentCanvas", `./${prevIndex}`);
 		location.reload();
 	} else {
 		prevLink.style.display = 'none';
 	}
 });
-nextLink.addEventListener("click", function () {
-	var currentCanvas = localStorage.getItem("currentCanvas");
-	var currentIndex = parseInt(currentCanvas.substring(2));
+
+nextLink.addEventListener("click", () => {
 	if (currentIndex < 10) {
-		var nextIndex = (currentIndex + 1).toString().padStart(2, "0");
-		localStorage.setItem("currentCanvas", "./" + nextIndex);
+		const nextIndex = (currentIndex + 1).toString().padStart(2, "0");
+		localStorage.setItem("currentCanvas", `./${nextIndex}`);
 		location.reload();
 	} else {
 		nextLink.style.display = 'none';
