@@ -2,9 +2,9 @@
 
 :root {
 	/* --bg: #474543;
-	--primary: #ffffff; */
-	/* --bg: #CACFDA; */
-	--bg: #FFFFFF;
+	--primary: #000000;
+	--bg: #CACFDA; */
+	--bg: rgb(255, 255, 255);
 	--primary: #000000;
 	--margin-l: 64px;
 	--margin-s: 40px;
@@ -40,19 +40,28 @@ h2 {
 
 .section {
 	display: flex;
+	width: 100vw;
 	border-top: 2px var(--primary) solid;
 }
 
 .text-content {
 	flex-grow: 1;
-	padding: var(--margin-s) var(--margin-l) var(--margin-s) var(--margin-s)
+	padding: var(--margin-s);
 }
 
 /*************** CREATIVE CODING ******************/
 /*************** CREATIVE CODING ******************/
 /*************** CREATIVE CODING ******************/
+#creative-coding {
+	/* flex-wrap: wrap; */
+}
+
 #creative-coding .img-content {
 	border-right: 2px var(--primary) solid;
+}
+
+#creative-coding .text-content {
+	padding-right: var(--margin-l);
 }
 
 .canvas-img {
@@ -96,11 +105,11 @@ hr {
 
 .go-to {
 	margin: auto 0 0 auto;
-	width: 300px;
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
+	gap: 3em;
 	align-items: center;
-	transition: padding .3s ease
+	transition: gap .3s ease
 }
 
 .canvas-selected {
@@ -116,7 +125,7 @@ hr {
 .canvas-selected .flex-item {}
 
 .canvas-selected:hover .go-to {
-	padding-left: 50px;
+	gap: 1em;
 }
 
 .canvas-selected:hover {
@@ -132,19 +141,31 @@ hr {
 /*************** FRACTALES 3D ******************/
 /*************** FRACTALES 3D ******************/
 #fractales-3d {
-	flex-wrap: wrap;
+	/* flex-wrap: wrap-reverse; */
+}
+
+.section-title {
+	margin-top: 0;
+	margin-bottom: 2em;
+}
+
+#fractales-3d .section-title {
+	text-align: right;
 }
 
 #fractales-3d .img-content {
 	border-left: 2px var(--primary) solid;
-	margin-right: var(--margin-l);
 }
 
 #fractal-img-canvas {
-	background: red
+	background: red;
+	margin: var(--margin-s);
+	margin-right: var(--margin-l);
 }
 
-#fractales-3d .text-content {}
+#fractales-3d .text-content {
+	padding-left: var(--margin-l);
+}
 
 .accordion-content {
 	overflow: hidden;
@@ -160,6 +181,11 @@ hr {
 .panel-body {
 	max-height: 0;
 	transition: max-height 0.4s ease;
+}
+
+.panel-body p {
+	margin-top: 0;
+	padding-top: 1rem;
 }
 
 .accordion-content.active .panel-body {
@@ -180,6 +206,10 @@ hr {
 	cursor: pointer
 }
 
+.panel-body .go-to {
+	margin-bottom: 1rem;
+}
+
 .panel-body:hover .go-to {
-	padding-left: 50px;
+	gap: 1em;
 }
