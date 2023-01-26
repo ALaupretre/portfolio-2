@@ -131,6 +131,9 @@ hr {
 /*************** FRACTALES 3D ******************/
 /*************** FRACTALES 3D ******************/
 /*************** FRACTALES 3D ******************/
+#fractales-3d {
+	flex-wrap: wrap;
+}
 
 #fractales-3d .img-content {
 	border-left: 2px var(--primary) solid;
