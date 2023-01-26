@@ -131,16 +131,14 @@ hr {
 /*************** FRACTALES 3D ******************/
 /*************** FRACTALES 3D ******************/
 /*************** FRACTALES 3D ******************/
+
 #fractales-3d .img-content {
 	border-left: 2px var(--primary) solid;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	margin-right: var(--margin-l);
 }
 
-#fractales-3d .img-content img {
-	max-width: 100%;
-	max-height: 100%;
+#fractal-img-canvas {
+	background: red
 }
 
 #fractales-3d .text-content {}
@@ -148,7 +146,6 @@ hr {
 .accordion-content {
 	overflow: hidden;
 	border-top: 2px solid var(--primary);
-
 }
 
 .panel-heading {

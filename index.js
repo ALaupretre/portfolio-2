@@ -47,20 +47,8 @@ panelHeadings.forEach((panelHeading) => {
 });
 
 
-const fractalImg = document.querySelector('#fractal-img');
-const sequenceLength = 125;
-const sequenceStart = 1;
-let imageCache = {};
-
-function preloadImages(start, end) {
-	for (let i = start; i <= end; i++) {
-		let imgIndexString = i.toString().padStart(3, 0);
-		let imgSrc = `src/Output040/040000${imgIndexString}.png`;
-		let img = new Image();
-		img.src = imgSrc;
-		imageCache[i] = img;
-	}
-}
+const canvas = document.querySelector('#fractal-img-canvas');
+const ctx = canvas.getContext('2d');
 
 function getElementVisibility(element) {
 	const elementRect = element.getBoundingClientRect();
@@ -73,14 +61,22 @@ function getElementVisibility(element) {
 	if (elementPositionX > windowHeightExtended) {
 		return 1;
 	}
+
 	return elementPositionX / windowHeightExtended;
 }
 
-// Preload images when the page loads
-preloadImages(sequenceStart, sequenceLength);
+const sequenceLength = 125;
+const sequenceStart = 1;
+const images = [];
+
+for (let i = sequenceStart; i <= sequenceLength; i++) {
+	const image = new Image();
+	image.src = `src/Output040/040000${i.toString().padStart(3, 0)}.png`;
+	images.push(image);
+}
+
 window.addEventListener('scroll', () => {
-	const imgIndex = Math.floor(getElementVisibility(fractalImg) * (sequenceLength - sequenceStart)) + sequenceStart;
-	imgIndexString = imgIndex.toString().padStart(3, 0);
-	console.log(imgIndexString);
-	fractalImg.src = `src/Output040/040000${imgIndexString}.png`;
+	const imgIndex = Math.floor(getElementVisibility(canvas) * (sequenceLength - sequenceStart)) + sequenceStart;
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	ctx.drawImage(images[imgIndex - 1], 0, 0, canvas.width, canvas.height);
 });
