@@ -48,7 +48,18 @@ panelHeadings.forEach((panelHeading) => {
 
 
 const canvas = document.querySelector('#fractal-img-canvas');
-const ctx = canvas.getContext('2d');
+const context = canvas.getContext('2d');
+const sequenceLength = 125;
+const sequenceStart = 1;
+let currentImageIndex = sequenceStart;
+let images = [];
+
+// Preload all images to improve performance
+for (let i = sequenceStart; i <= sequenceLength; i++) {
+	let img = new Image();
+	img.src = `src/Output040/040000${i.toString().padStart(3, 0)}.png`;
+	images.push(img);
+}
 
 function getElementVisibility(element) {
 	const elementRect = element.getBoundingClientRect();
@@ -61,22 +72,18 @@ function getElementVisibility(element) {
 	if (elementPositionX > windowHeightExtended) {
 		return 1;
 	}
-
 	return elementPositionX / windowHeightExtended;
 }
 
-const sequenceLength = 125;
-const sequenceStart = 1;
-const images = [];
-
-for (let i = sequenceStart; i <= sequenceLength; i++) {
-	const image = new Image();
-	image.src = `src/Output040/040000${i.toString().padStart(3, 0)}.png`;
-	images.push(image);
+function drawImage() {
+	const imgIndex = Math.floor(getElementVisibility(canvas) * (sequenceLength - sequenceStart)) + sequenceStart;
+	if (imgIndex !== currentImageIndex) {
+		currentImageIndex = imgIndex;
+		context.drawImage(images[imgIndex - sequenceStart], 0, 0, canvas.width, canvas.height);
+		console.log("img drawn");
+	}
+	requestAnimationFrame(drawImage);
 }
 
-window.addEventListener('scroll', () => {
-	const imgIndex = Math.floor(getElementVisibility(canvas) * (sequenceLength - sequenceStart)) + sequenceStart;
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	ctx.drawImage(images[imgIndex - 1], 0, 0, canvas.width, canvas.height);
-});
+window.addEventListener('scroll', drawImage);
+drawImage();
