@@ -48,6 +48,19 @@ panelHeadings.forEach((panelHeading) => {
 
 
 const fractalImg = document.querySelector('#fractal-img');
+const sequenceLength = 125;
+const sequenceStart = 1;
+let imageCache = {};
+
+function preloadImages(start, end) {
+	for (let i = start; i <= end; i++) {
+		let imgIndexString = i.toString().padStart(3, 0);
+		let imgSrc = `src/Output040/040000${imgIndexString}.png`;
+		let img = new Image();
+		img.src = imgSrc;
+		imageCache[i] = img;
+	}
+}
 
 function getElementVisibility(element) {
 	const elementRect = element.getBoundingClientRect();
@@ -60,12 +73,11 @@ function getElementVisibility(element) {
 	if (elementPositionX > windowHeightExtended) {
 		return 1;
 	}
-
 	return elementPositionX / windowHeightExtended;
 }
 
-const sequenceLength = 125;
-const sequenceStart = 1;
+// Preload images when the page loads
+preloadImages(sequenceStart, sequenceLength);
 window.addEventListener('scroll', () => {
 	const imgIndex = Math.floor(getElementVisibility(fractalImg) * (sequenceLength - sequenceStart)) + sequenceStart;
 	imgIndexString = imgIndex.toString().padStart(3, 0);
