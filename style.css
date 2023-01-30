@@ -4,9 +4,9 @@
 	/* --bg: #474543;
 	--primary: #000000;
 	--bg: #CACFDA; */
-	--bg: rgb(255, 255, 255);
+	--bg: #FFFFFF;
 	--primary: #000000;
-	--margin-l: 64px;
+	--margin-l: 5vw;
 	--margin-s: 40px;
 }
 
@@ -36,6 +36,21 @@ h1 {
 h2 {
 	margin: 1rem 0px;
 	font-size: 40px;
+}
+
+a {
+	text-decoration: none;
+	color: var(--primary);
+}
+
+ul {
+	margin: 2rem 0px;
+	list-style-position: inside;
+	padding-left: 0;
+}
+
+li {
+	margin: 1em 0;
 }
 
 .section {
@@ -212,4 +227,48 @@ hr {
 
 .panel-body:hover .go-to {
 	gap: 1em;
+}
+
+/*************** WCC******************/
+/*************** WCC******************/
+/*************** WCC******************/
+#wcc .text-content {
+	border-left: 2px var(--primary) solid;
+	padding-right: var(--margin-l);
+}
+
+#wcc:hover .go-to {
+	cursor: pointer;
+	gap: 1em;
+}
+
+#wcc img {
+	max-width: 40vh;
+	margin: var(--margin-s) var(--margin-s) var(--margin-s) var(--margin-l);
+}
+
+
+/*************** FOOTER ******************/
+/*************** FOOTER ******************/
+/*************** FOOTER ******************/
+
+#footer {
+	border-top: 2px solid var(--primary);
+	padding: var(--margin-l);
+}
+
+#footer .flex-container {
+	display: flex;
+	justify-content: space-between;
+	width: 100%
+}
+
+.social-media a {
+	padding: .4rem;
+	transition: .3s ease
+}
+
+.social-media a:hover {
+	background-color: var(--primary);
+	color: var(--bg);
 }

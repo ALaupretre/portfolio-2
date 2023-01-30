@@ -47,7 +47,7 @@ function loadProjectData() {
 	if (currentIndex === 1) {
 		prevLink.style.display = 'none';
 	}
-	else if (currentIndex === 10) {
+	else if (currentIndex === 5) {
 		nextLink.style.display = 'none';
 	}
 	else {

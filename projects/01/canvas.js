@@ -1,171 +1,122 @@
-palette = ['#14141a', '#ffffff', '#e87373', '#53ee8f', '#3884ff'];
-// palette = ["#E7F6F2", "#395B64", "#2C3333", "#A5C9CA", "#FF3A24"];
+palette = ['#000000', '#e6e6e6', '#d8b569', '#b879ec', '#5bbad7'];
+
+// clickReload();
 
 
-let alpha = 1;
-let radius = .3;
-let pointsPerLine = 3;
-let maxPoints = 400;
-let margin = canvas.height * .15;
-let cursorLength = 25;
-let cursorWidth = 3;
+// setCanvasBackground(palette[0]);
 
-let points = [];
+const canvasDiagonal = diagonal(canvas.width, canvas.height);
 
-class Point {
-	constructor(x, y, vx, vy, friction, radius) {
-		this.x = x;
-		this.y = y;
-		this.vx = vx;
-		this.vy = vy;
-		this.friction = friction;
+function diagonal(a, b) {
+	return Math.sqrt(a * a + b * b);
+}
+
+class Line {
+	constructor(radius, startAngleA, startAngleB, velocityA, velocityB) {
+		this.radius = radius;
+		this.startAngleA = startAngleA;
+		this.startAngleB = startAngleB;
+		this.velocityA = velocityA;
+		this.velocityB = velocityB;
+		this.color1 = palette[0];
+		this.color2 = paletteRandom(palette[0]);
 	}
 
-	updatePosition() {
-		// Update the velocity of the point based on a random acceleration
-		this.vx += Math.random() - 0.5;
-		this.vy += Math.random() - 0.5;
-
-		// Update the position of the point based on the velocity
-		this.x += this.vx;
-		this.y += this.vy;
-
-		// Apply friction to the velocity
-		this.vx *= this.friction;
-		this.vy *= this.friction;
-
-		// Keep the point inside the canvas
-		if (this.x <= margin || this.x >= canvas.width - margin) {
-			this.vx *= -1;
-		}
-		if (this.y <= margin || this.y >= canvas.height - margin) {
-			this.vy *= -1;
-		}
+	polarToCartesian(radius, angle) {
+		const x = radius * Math.cos(angle);
+		const y = radius * Math.sin(angle);
+		return { x, y };
 	}
 
-	drawCursor() {
-		ctx.beginPath();
-		ctx.lineWidth = 1;
-		ctx.moveTo(this.x, this.y);
-		ctx.lineTo(this.x, canvas.height - margin / 2 - cursorLength / 2);
-		ctx.strokeStyle = palette[1];
-		ctx.stroke();
+	draw() {
+		const pointA = this.polarToCartesian(this.radius, this.startAngleA);
+		pointA.x += canvas.width / 2;
+		pointA.y += canvas.height / 2;
 
+		const pointB = this.polarToCartesian(this.radius, this.startAngleB);
+		pointB.x += canvas.width / 2;
+		pointB.y += canvas.height / 2;
+
+		this.angle = getAngle(pointA.x, pointA.y, pointB.x, pointB.y);
+
+		var gradient = ctx.createConicGradient(this.angle, pointA.x, pointA.y);
+
+		gradient.addColorStop(0, this.color1);
+		gradient.addColorStop(1, this.color2);
+
+		ctx.save();
+		ctx.translate((pointA.x + pointB.x) / 2, (pointA.y + pointB.y) / 2);
+		ctx.rotate(this.angle);
+		ctx.translate(-canvasDiagonal * 2, -canvasDiagonal);
 		ctx.beginPath();
-		ctx.rect(this.x - cursorWidth / 2, canvas.height - margin / 2 - cursorLength / 2, cursorWidth, cursorLength);
-		ctx.fillStyle = palette[4];
+		ctx.rect(0, 0, canvasDiagonal * 2, canvasDiagonal * 2);
+		ctx.restore();
+		ctx.fillStyle = gradient;
+		ctx.fill();
+
+		var gradient2 = ctx.createConicGradient(this.angle - Math.PI, pointB.x, pointB.y);
+
+		gradient2.addColorStop(1, this.color1);
+		gradient2.addColorStop(0, this.color2);
+
+		ctx.save();
+		ctx.translate((pointA.x + pointB.x) / 2, (pointA.y + pointB.y) / 2);
+		ctx.rotate(this.angle - Math.PI);
+		ctx.translate(-canvasDiagonal * 2, -canvasDiagonal);
+		ctx.beginPath();
+		ctx.rect(0, 0, canvasDiagonal * 2, canvasDiagonal * 2);
+		ctx.restore();
+		ctx.fillStyle = gradient2;
 		ctx.fill();
 
 		ctx.beginPath();
-		ctx.lineWidth = 1;
-		ctx.moveTo(this.x, this.y);
-		ctx.lineTo(margin / 2 - cursorLength / 2, this.y);
-		ctx.strokeStyle = palette[1];
-		ctx.stroke();
-
-		ctx.beginPath();
-		ctx.rect(margin / 2 - cursorLength / 2, this.y - cursorWidth / 2, cursorLength, cursorWidth);
-		ctx.fillStyle = palette[4];
-		ctx.fill();
-
-		// Calculate size to match absolute velocity
-		this.squareSize = (Math.abs(this.vx) + Math.abs(this.vy)) * 5 + 5;
-
-		// Draw the point on the canvas
-		ctx.beginPath();
-		ctx.rect(this.x - this.squareSize / 2, this.y - this.squareSize / 2, this.squareSize, this.squareSize);
-		ctx.strokeStyle = palette[4];
+		ctx.lineCap = "round";
+		ctx.strokeStyle = this.color2;
 		ctx.lineWidth = 2;
+		ctx.moveTo(pointA.x, pointA.y);
+		ctx.lineTo(pointB.x, pointB.y);
 		ctx.stroke();
-	}
+	};
 
-	drawPointsBetween(otherPoint) {
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		// Calculate the distance between the two points
-		var dx = this.x - otherPoint.x;
-		var dy = this.y - otherPoint.y;
-
-		// Loop through the 20 points
-		for (let i = 0; i < pointsPerLine; i++) {
-			// Calculate a random position along the line between the two points
-			var t = Math.random();
-			let point = {
-				x: this.x + (otherPoint.x - this.x) * t,
-				y: this.y + (otherPoint.y - this.y) * t,
-				alpha: 1,
-				radius: radius,
-				color: palette[1]
-				//  `rgba(${100},${Math.random() * 30 + 50},${20},1)`
-				,
-				windX: 0,
-				windY: Math.random() * -.7
-			};
-
-			// Add the point to the array
-			points.push(point);
-
-			// If the array reaches its maximum length, remove the oldest point
-			if (points.length > maxPoints) {
-				points.shift();
-			}
-		}
-
-		//Draw every points in array
-		points.forEach((point) => {
-			drawPoint(point);
-			point.alpha *= .96;
-			point.radius += .05;
-			point.x += point.windX;
-			point.y += point.windY;
-		});
-	}
-
-	drawLine(otherPoint) {
-		ctx.beginPath();
-		ctx.lineWidth = 1;
-		ctx.moveTo(this.x, this.y);
-		ctx.lineTo(otherPoint.x, otherPoint.y);
-		ctx.strokeStyle = palette[2];
-		ctx.stroke();
+	update() {
+		this.startAngleA += this.velocityA;
+		this.startAngleB += this.velocityB;
 	}
 }
 
-function drawPoint(point) {
-	ctx.globalAlpha = point.alpha;
-	ctx.beginPath();
-	ctx.arc(point.x, point.y, point.radius, 0, 2 * Math.PI);
-	ctx.fillStyle = point.color;
-	ctx.fill();
+function getAngle(x1, y1, x2, y2) {
+	let angle = Math.atan2(y2 - y1, x2 - x1);
+	return angle;
 }
 
-// Set the background color of the canvas
-setCanvasBackground(palette[0]);
-
-// Create two objects to represent the guide points
-let guidePoint1 = new Point(canvas.width * .3, canvas.height * .3, 1, 1, 0.99, 1);
-let guidePoint2 = new Point(canvas.width * .7, canvas.height * .7, 1, 1, 0.99, 1);
-let guidePoint3 = new Point(canvas.width * .7, canvas.height * .2, 1, 1, 0.99, 1);
-
-// Start the animation loop
-function animate() {
-	// Update the position of the guide points
-	guidePoint1.updatePosition();
-	guidePoint2.updatePosition();
-	guidePoint3.updatePosition();
-
-	guidePoint1.drawPointsBetween(guidePoint2);
-	guidePoint2.drawPointsBetween(guidePoint3);
-	guidePoint1.drawPointsBetween(guidePoint3);
-
-	guidePoint1.drawLine(guidePoint2);
-	guidePoint2.drawLine(guidePoint3);
-	guidePoint1.drawLine(guidePoint3);
-
-	guidePoint1.drawCursor();
-	guidePoint2.drawCursor();
-	guidePoint3.drawCursor();
-
-	requestAnimationFrame(animate);
+ctx.globalCompositeOperation = "overlay";
+const animationSpeed = .04;
+const circleRadius = canvas.width * .3;
+let f = 0;
+let lines = [];
+for (let i = 0; i < 3; i++) {
+	let line = new Line(circleRadius, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * animationSpeed, (Math.random() - .5) * animationSpeed, palette[1]);
+	lines.push(line);
 }
-// Start the animation loop
-animate();
+function drawCanvas() {
+	ctx.clearRect(0, 0, canvasSize, canvasSize);
+	lines.forEach((line) => {
+		line.draw();
+		line.update();
+	});
+
+	requestAnimationFrame(drawCanvas);
+}
+requestAnimationFrame(drawCanvas);
+
+
+// var rect = canvas.getBoundingClientRect();
+// document.addEventListener("mousemove", function (event) {
+// 	ctx.clearRect(0, 0, canvasSize, canvasSize);
+// 	let line = new Line(300, 50, 50, 50, "black", "white");
+// 	line.ax = event.clientX - rect.left;
+// 	line.ay = event.clientY - rect.top;
+// 	line.draw();
+
+// });
+
