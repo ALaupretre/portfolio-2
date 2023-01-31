@@ -4,7 +4,7 @@
 	/* --bg: #474543;
 	--primary: #000000;
 	--bg: #CACFDA; */
-	--bg: #FFFFFF;
+	--bg: #ffffff;
 	--primary: #000000;
 	--margin-l: 5vw;
 	--margin-s: 40px;
@@ -29,7 +29,7 @@ body {
 }
 
 h1 {
-	margin: 83px 180px;
+	margin: 5vw 10vw;
 	font-size: 108px;
 }
 
@@ -80,7 +80,7 @@ li {
 }
 
 .canvas-img {
-	max-width: 40vh;
+	max-width: 50vh;
 	margin: var(--margin-l);
 }
 
@@ -210,7 +210,11 @@ hr {
 
 .expand-retract {
 	opacity: 1;
-	transition: opacity .5s
+	transition: opacity .5s, margin-right .3s ease-out
+}
+
+.panel-heading:hover .expand-retract {
+	margin-right: 1rem;
 }
 
 .accordion-content.active .panel-heading .expand-retract {
@@ -243,7 +247,7 @@ hr {
 }
 
 #wcc img {
-	max-width: 40vh;
+	max-width: 55vh;
 	margin: var(--margin-s) var(--margin-s) var(--margin-s) var(--margin-l);
 }
 
@@ -259,12 +263,13 @@ hr {
 
 #footer .flex-container {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 	width: 100%
 }
 
 .social-media a {
-	padding: .4rem;
+	padding: .3rem .6rem;
 	transition: .3s ease
 }
 
