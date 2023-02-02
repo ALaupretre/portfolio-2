@@ -6,6 +6,7 @@
 	--bg: #CACFDA; */
 	--bg: #ffffff;
 	--primary: #000000;
+	--secondary: #3a4cad;
 	--margin-l: 5vw;
 	--margin-s: 40px;
 }
@@ -29,7 +30,7 @@ body {
 }
 
 h1 {
-	margin: 5vw 10vw;
+	margin: var(--margin-l);
 	font-size: 108px;
 }
 
@@ -55,13 +56,27 @@ li {
 
 .section {
 	display: flex;
+	flex-wrap: wrap;
+	background: var(--bg);
 	width: 100vw;
 	border-top: 2px var(--primary) solid;
 }
 
 .text-content {
-	flex-grow: 1;
 	padding: var(--margin-s);
+}
+
+.img-content {
+	/* background: var(--secondary); */
+}
+
+.go-to {
+	margin: 3rem 0;
+	display: flex;
+	justify-content: flex-end;
+	gap: 3em;
+	align-items: center;
+	transition: gap .3s ease
 }
 
 /*************** CREATIVE CODING ******************/
@@ -97,7 +112,9 @@ hr {
 	width: 100%
 }
 
-
+.canvas-title {
+	margin-top: 2rem;
+}
 
 .canvas-selector {
 	margin: 0;
@@ -118,26 +135,15 @@ hr {
 	color: var(--bg)
 }
 
-.go-to {
-	margin: auto 0 0 auto;
-	display: flex;
-	justify-content: flex-end;
-	gap: 3em;
-	align-items: center;
-	transition: gap .3s ease
-}
-
 .canvas-selected {
 	display: flex;
 	flex-direction: column;
-
+	justify-content: space-between;
 }
 
 #creative-coding .img-content {
 	cursor: pointer;
 }
-
-.canvas-selected .flex-item {}
 
 .canvas-selected:hover .go-to {
 	gap: 1em;
@@ -225,10 +231,6 @@ hr {
 	cursor: pointer
 }
 
-.panel-body .go-to {
-	margin-bottom: 1rem;
-}
-
 .panel-body:hover .go-to {
 	gap: 1em;
 }
@@ -236,13 +238,16 @@ hr {
 /*************** WCC******************/
 /*************** WCC******************/
 /*************** WCC******************/
+#wcc {
+	cursor: pointer;
+}
+
 #wcc .text-content {
 	border-left: 2px var(--primary) solid;
 	padding-right: var(--margin-l);
 }
 
 #wcc:hover .go-to {
-	cursor: pointer;
 	gap: 1em;
 }
 

@@ -17,7 +17,7 @@ canvasSelectors.forEach((canvasSelector, idx) => {
 
 		const projectIndex = (idx + 1).toString().padStart(2, '0');
 		const projectPath = `projects/${projectIndex}/metadata.json`;
-		const imgSrc = `projects/${projectIndex}/thumbnail.jpg`;
+		const imgSrc = `projects/${projectIndex}/thumbnail.jpeg`;
 		const relativePath = `./${projectIndex}`;
 		localStorage.setItem('currentCanvas', relativePath);
 		fetch(projectPath)

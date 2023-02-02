@@ -1,9 +1,27 @@
-palette = ['#000000', '#e6e6e6', '#d8b569', '#b879ec', '#5bbad7'];
+function getBrowser() {
+	const userAgent = navigator.userAgent.toLowerCase();
+	if (userAgent.indexOf("chrome") !== -1) {
+		return "Chrome";
+	} else if (userAgent.indexOf("firefox") !== -1) {
+		return "Firefox";
+	} else if (userAgent.indexOf("safari") !== -1) {
+		return "Safari";
+	} else {
+		return "Unknown";
+	}
+}
 
-// clickReload();
+if (getBrowser() == "Firefox") {
+	palette = ['#000000', '#757272', '#6e5c35', '#452d59', '#336a7a'];
+	ctx.globalCompositeOperation = "lighter";
+	console.log(123);
+} else {
+	palette = ['#000000', '#e6e6e6', '#d8b569', '#b879ec', '#5bbad7'];
+	ctx.globalCompositeOperation = "overlay";
+}
 
-
-// setCanvasBackground(palette[0]);
+const animationSpeed = .02;
+const circleRadius = canvas.width * .3;
 
 const canvasDiagonal = diagonal(canvas.width, canvas.height);
 
@@ -39,10 +57,15 @@ class Line {
 
 		this.angle = getAngle(pointA.x, pointA.y, pointB.x, pointB.y);
 
-		var gradient = ctx.createConicGradient(this.angle, pointA.x, pointA.y);
-
-		gradient.addColorStop(0, this.color1);
-		gradient.addColorStop(1, this.color2);
+		if (getBrowser() == "Chrome") {
+			var gradient = ctx.createConicGradient(this.angle, pointA.x, pointA.y);
+			gradient.addColorStop(0, this.color1);
+			gradient.addColorStop(1, this.color2);
+		} else {
+			var gradient = ctx.createConicGradient((this.angle) + Math.PI / 2, pointA.x, pointA.y);
+			gradient.addColorStop(0, this.color2);
+			gradient.addColorStop(1, this.color1);
+		}
 
 		ctx.save();
 		ctx.translate((pointA.x + pointB.x) / 2, (pointA.y + pointB.y) / 2);
@@ -54,10 +77,15 @@ class Line {
 		ctx.fillStyle = gradient;
 		ctx.fill();
 
-		var gradient2 = ctx.createConicGradient(this.angle - Math.PI, pointB.x, pointB.y);
-
-		gradient2.addColorStop(1, this.color1);
-		gradient2.addColorStop(0, this.color2);
+		if (getBrowser() == "Chrome") {
+			var gradient2 = ctx.createConicGradient(this.angle - Math.PI, pointB.x, pointB.y);
+			gradient2.addColorStop(1, this.color1);
+			gradient2.addColorStop(0, this.color2);
+		} else {
+			var gradient2 = ctx.createConicGradient((this.angle - Math.PI) + Math.PI / 2, pointB.x, pointB.y);
+			gradient2.addColorStop(0, this.color1);
+			gradient2.addColorStop(1, this.color2);
+		}
 
 		ctx.save();
 		ctx.translate((pointA.x + pointB.x) / 2, (pointA.y + pointB.y) / 2);
@@ -89,9 +117,7 @@ function getAngle(x1, y1, x2, y2) {
 	return angle;
 }
 
-ctx.globalCompositeOperation = "overlay";
-const animationSpeed = .04;
-const circleRadius = canvas.width * .3;
+
 let f = 0;
 let lines = [];
 for (let i = 0; i < 3; i++) {
@@ -119,4 +145,3 @@ requestAnimationFrame(drawCanvas);
 // 	line.draw();
 
 // });
-
