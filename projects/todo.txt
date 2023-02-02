@@ -1,7 +1,0 @@
-start gallery
-
-git push find best idea repo (?ask chatgpt)
-
- have default canvas selected ( maybe by using active instead of clicked ? ) remeber that local storage has nothing prior to clicking right now
-
- github link dynamic
