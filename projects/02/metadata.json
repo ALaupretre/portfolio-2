@@ -1,0 +1,4 @@
+{
+	"title": "Cubes 3D",
+	"description": "A chaque cube on donne une position 3D, une taille et un point de perspective. Ces valeurs permettent de calculer les coordonnées 2D pour les 8 points du cube."
+}
