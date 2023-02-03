@@ -1,4 +1,4 @@
 {
 	"title": "Cercles Tangents",
-	"description": "On a cercle fixe de rayon fixe, un autre plus petit, de rayon fixe également mais son centre est dépend de la position souris. Autour d'un troisième cercle don't les valeurs sont calculés en fonction de celles des précédents, on génère de nombreux cercles à un angle régulier tout autour. Leurs rayons sont calculés pour qu'ils soient tangents au cercle 2."
+	"description": "On a cercle fixe de rayon fixe, un autre plus petit, de rayon fixe également mais son centre est dépendant de la position souris. Autour d'un troisième cercle dont les valeurs sont calculés en fonction de celles des précédents, on génère de nombreux cercles à un angle régulier tout autour. Leurs rayons sont calculés pour qu'ils soient tous tangents au cercle 2."
 }

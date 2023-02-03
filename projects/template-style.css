@@ -35,7 +35,8 @@ body {
 
 #title {
 	cursor: pointer;
-	font-size: 2rem;
+	font-size: 1.4rem;
+	padding: 2vw 0;
 	color: white;
 	text-align: center;
 	opacity: .2;

@@ -1,4 +1,4 @@
 {
 	"title": "Conic Gradients",
-	"description": "En utilisant le dégradé conique de l'API canvas, on peut optenir une demi-droite. Pour obtenir un segment, il faut faire une symetrie axiale du dégradé, l'axe étant perpendiculaire à cette demi-doite."
+	"description": "En utilisant le dégradé conique de l'API canvas, on peut visualiser une demi-droite. Pour obtenir un segment, il faut faire une symétrie axiale du dégradé, l'axe de symétrie étant perpendiculaire à cette demi-doite."
 }

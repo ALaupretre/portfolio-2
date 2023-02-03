@@ -1,4 +1,4 @@
-palette = ['#000000', '#424242', '#000000', '#000000', '#000000'];
+palette = ['#000000', '#5c574a', '#000000', '#000000', '#000000'];
 setCanvasBackground(palette[0]);
 
 ctx.globalCompositeOperation = "lighter";
@@ -11,7 +11,7 @@ let mouseY = canvas.height / 2;
 
 const rotationSpeed = Math.PI * 2 / 2000;
 const gridWidth = canvas.width * .5;
-const numberOfLines = canvas.width * .1;
+const numberOfLines = canvas.width * .03;
 const distance = canvas.width * .2;
 const sphereDiameter = canvas.width * .2;
 

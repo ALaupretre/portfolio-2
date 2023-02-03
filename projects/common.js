@@ -61,7 +61,6 @@ function loadProjectData() {
 	fetch(metadataPath)
 		.then(response => response.json())
 		.then(data => {
-
 			document.title = data.title;
 			title.innerHTML = data.title;
 			description.innerHTML = data.description;

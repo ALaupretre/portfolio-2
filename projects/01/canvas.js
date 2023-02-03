@@ -14,7 +14,6 @@ function getBrowser() {
 if (getBrowser() == "Firefox") {
 	palette = ['#000000', '#757272', '#6e5c35', '#452d59', '#336a7a'];
 	ctx.globalCompositeOperation = "lighter";
-	console.log(123);
 } else {
 	palette = ['#000000', '#e6e6e6', '#d8b569', '#b879ec', '#5bbad7'];
 	ctx.globalCompositeOperation = "overlay";
@@ -117,31 +116,18 @@ function getAngle(x1, y1, x2, y2) {
 	return angle;
 }
 
-
-let f = 0;
 let lines = [];
 for (let i = 0; i < 3; i++) {
 	let line = new Line(circleRadius, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * animationSpeed, (Math.random() - .5) * animationSpeed, palette[1]);
 	lines.push(line);
 }
+
 function drawCanvas() {
 	ctx.clearRect(0, 0, canvasSize, canvasSize);
 	lines.forEach((line) => {
 		line.draw();
 		line.update();
 	});
-
 	requestAnimationFrame(drawCanvas);
 }
 requestAnimationFrame(drawCanvas);
-
-
-// var rect = canvas.getBoundingClientRect();
-// document.addEventListener("mousemove", function (event) {
-// 	ctx.clearRect(0, 0, canvasSize, canvasSize);
-// 	let line = new Line(300, 50, 50, 50, "black", "white");
-// 	line.ax = event.clientX - rect.left;
-// 	line.ay = event.clientY - rect.top;
-// 	line.draw();
-
-// });
