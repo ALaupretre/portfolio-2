@@ -1,3 +1,28 @@
+const cursorDefault = document.getElementById("cursor-default");
+const cursorPointer = document.getElementById("cursor-pointer");
+const pointedElements = document.querySelectorAll('.pointer');
+
+document.addEventListener("mousemove", e => {
+	cursorDefault.style.top = e.clientY + "px";
+	cursorDefault.style.left = e.clientX + "px";
+
+	cursorPointer.style.top = e.clientY + "px";
+	cursorPointer.style.left = e.clientX + "px";
+});
+
+pointedElements.forEach(element => {
+	element.addEventListener('mouseover', function () {
+		if (!element.classList.contains("active") && !element.parentElement.classList.contains("active")) {
+			cursorPointer.style.opacity = 1;
+			cursorDefault.style.opacity = 0;
+		}
+	});
+	element.addEventListener('mouseout', function () {
+		cursorPointer.style.opacity = 0;
+		cursorDefault.style.opacity = 1;
+	});
+});
+
 //Creative coding section
 
 const canvasSelectors = document.querySelectorAll('.canvas-selector');
@@ -57,7 +82,7 @@ let images = [];
 // Preload all images to improve performance
 for (let i = sequenceStart; i <= sequenceLength; i++) {
 	let img = new Image();
-	img.src = `src/Output041S/041S000${i.toString().padStart(3, 0)}.jpg`;
+	img.src = `src/Output041SColored/041SColored000${i.toString().padStart(3, 0)}.jpg`;
 	images.push(img);
 }
 

@@ -10,6 +10,10 @@
 </head>
 
 <body>
+	<div id="cursor-default"></div>
+	<div id="cursor-pointer"></div>
+
+
 	<h1>ANTONIN<br>LAUPRETRE</h1>
 
 	<div id="creative-coding" class="section">
@@ -25,11 +29,11 @@
 			</ul>
 			<hr>
 			<div class="canvas-selectors-container">
-				<h2 class="canvas-selector active">01</h2>
-				<h2 class="canvas-selector">02</h2>
-				<h2 class="canvas-selector">03</h2>
-				<h2 class="canvas-selector">04</h2>
-				<h2 class="canvas-selector">05</h2>
+				<h2 class="canvas-selector pointer active">01</h2>
+				<h2 class="canvas-selector pointer">02</h2>
+				<h2 class="canvas-selector pointer">03</h2>
+				<h2 class="canvas-selector pointer">04</h2>
+				<h2 class="canvas-selector pointer">05</h2>
 			</div>
 			<hr>
 			<div class="canvas-selected">
@@ -40,7 +44,7 @@
 						assez long la ? je ne sais pas mais la ça a l’air bon</p>
 				</div>
 
-				<div class="go-to flex-item">
+				<div class="go-to pointer flex-item">
 					<span>VOIR LE CANVAS</span>
 					<svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M0.894409 30L29.8944 1M29.8944 1H0.894409M29.8944 1V30" stroke="black"
@@ -57,19 +61,19 @@
 			<h2 class="section-title">FRACTALES 3D</h2>
 			<div id="accordion">
 				<div class="accordion-content active">
-					<div class="panel-heading">
+					<div class="panel-heading pointer">
 						<h2>Projet MutaGen</h2>
 						<h2 class="expand-retract">+</h2>
 					</div>
-					<div class="panel-body"
-						onclick="window.open('https://bucolic-quokka-06e413.netlify.app', '_blank')">
+					<div class="panel-body">
 						<p>est une collection interactive de 43 rendus 3D de fractales.<br><br>Chaque branche est issue
 							de mutations aléatoires des formules de la fractale précédente.</p>
 						<ul>
 							<li>HTML&nbsp;&nbsp;&nbsp; CSS&nbsp;&nbsp;&nbsp; JS Vanilla</li>
 							<li>mandelbulb3d</li>
 						</ul>
-						<div class="go-to">
+						<div class="go-to pointer"
+							onclick="window.open('https://bucolic-quokka-06e413.netlify.app', '_blank')">
 							<span>ALLER SUR LE SITE</span>
 							<svg width="31" height="31" viewBox="0 0 31 31" fill="none"
 								xmlns="http://www.w3.org/2000/svg">
@@ -80,7 +84,7 @@
 					</div>
 				</div>
 				<div class="accordion-content">
-					<div class="panel-heading">
+					<div class="panel-heading pointer">
 						<h2>MB017 Set</h2>
 						<h2 class="expand-retract">+</h2>
 					</div>
@@ -94,7 +98,7 @@
 							<li>After Effects&nbsp;&nbsp;&nbsp; Premiere</li>
 							<li>mandelbulb3d</li>
 						</ul>
-						<div class="go-to">
+						<div class="go-to pointer">
 							<span>VOIR LA VIDEO</span>
 							<svg width="31" height="31" viewBox="0 0 31 31" fill="none"
 								xmlns="http://www.w3.org/2000/svg">
@@ -105,7 +109,7 @@
 					</div>
 				</div>
 				<div class="accordion-content">
-					<div class="panel-heading">
+					<div class="panel-heading pointer">
 						<h2>The Great Fifth</h2>
 						<h2 class="expand-retract">+</h2>
 					</div>
@@ -119,7 +123,7 @@
 							<li>After Effects&nbsp;&nbsp;&nbsp;Trapcode Sound Keys</li>
 							<li>mandelbulb3d</li>
 						</ul>
-						<div class="go-to">
+						<div class="go-to pointer">
 							<span>VOIR LA VIDEO</span>
 							<svg width="31" height="31" viewBox="0 0 31 31" fill="none"
 								xmlns="http://www.w3.org/2000/svg">
@@ -130,13 +134,13 @@
 					</div>
 				</div>
 				<div class="accordion-content">
-					<div class="panel-heading">
+					<div class="panel-heading pointer">
 						<h2>...</h2>
 						<h2 class="expand-retract">+</h2>
 					</div>
 					<div class="panel-body">
 						<p>Voir plus sur youtube et instagram.</p>
-						<div class="go-to">
+						<div class="go-to pointer">
 							<span>YOUTUBE</span>
 							<svg width="31" height="31" viewBox="0 0 31 31" fill="none"
 								xmlns="http://www.w3.org/2000/svg">
@@ -144,7 +148,7 @@
 									stroke-width="2" />
 							</svg>
 						</div>
-						<div class="go-to">
+						<div class="go-to pointer">
 							<span>INSTAGRAM</span>
 							<svg width="31" height="31" viewBox="0 0 31 31" fill="none"
 								xmlns="http://www.w3.org/2000/svg">
@@ -176,7 +180,7 @@
 			<ul>
 				<li>HTML&nbsp;&nbsp;&nbsp; CSS&nbsp;&nbsp;&nbsp; JS Vanilla</li>
 			</ul>
-			<div class="go-to">
+			<div class="go-to pointer">
 				<span>ALLER SUR LE SITE</span>
 				<svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M0.894409 30L29.8944 1M29.8944 1H0.894409M29.8944 1V30" stroke="black" stroke-width="2" />
@@ -189,9 +193,9 @@
 	<div class="section" id="footer">
 		<div class="flex-container">
 			<div class="social-media">
-				<a href="https://github.com/ALaupretre">GITHUB</a>
-				<a href="https://www.instagram.com/antonin_lprtr/?hl=fr">INSTAGRAM</a>
-				<a href="https://www.youtube.com/channel/UCmY3qCX8RsQg3x2ZiUyKzEQ">YOUTUBE</a>
+				<a class="pointer" href="https://github.com/ALaupretre">GITHUB</a>
+				<a class="pointer" href="https://www.instagram.com/antonin_lprtr/?hl=fr">INSTAGRAM</a>
+				<a class="pointer" href="https://www.youtube.com/channel/UCmY3qCX8RsQg3x2ZiUyKzEQ">YOUTUBE</a>
 			</div>
 			<a class="email">antoninlaupretre@gmail.com</a>
 		</div>

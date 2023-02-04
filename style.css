@@ -1,18 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 
 :root {
-	/* --bg: #474543;
-	--primary: #000000;
-	--bg: #CACFDA; */
 	--bg: #ffffff;
 	--primary: #000000;
-	--secondary: #003cff;
-	/* --margin-l: 5vw; */
+	--secondary: #0011ff;
 	--margin-l: 100px;
 	--margin-s: 40px;
 }
 
-/* ===== Scrollbar CSS ===== */
+/*************** SCROLLBAR ******************/
+/*************** SCROLLBAR ******************/
+/*************** SCROLLBAR ******************/
 /* Firefox */
 * {
 	scrollbar-width: thin;
@@ -35,6 +33,38 @@
 	border: none;
 }
 
+/*************** CURSOR ******************/
+/*************** CURSOR ******************/
+/*************** CURSOR ******************/
+#cursor-default,
+#cursor-pointer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+	z-index: 9999;
+	pointer-events: none;
+	width: 45px;
+	height: 45px;
+	transition: opacity .3s;
+}
+
+#cursor-default {
+	border: 1px solid var(--primary);
+	top: -50px;
+	left: -50px;
+}
+
+#cursor-pointer {
+	background: #fff;
+	mix-blend-mode: difference;
+	opacity: 0;
+}
+
+/*************** GENERAL ******************/
+/*************** GENERAL ******************/
+/*************** GENERAL ******************/
 html {
 	scroll-behavior: smooth !important;
 	width: 100vw;
@@ -43,6 +73,7 @@ html {
 * {
 	box-sizing: border-box;
 	font-weight: normal;
+	cursor: none;
 }
 
 body {
@@ -201,7 +232,6 @@ img {
 }
 
 .canvas-selector:hover {
-	cursor: pointer;
 	background: var(--primary);
 	color: var(--bg);
 }
@@ -262,7 +292,6 @@ img {
 }
 
 .panel-heading {
-	cursor: pointer;
 	display: flex;
 	justify-content: space-between;
 }
@@ -289,10 +318,6 @@ img {
 
 .accordion-content.active .panel-heading .expand-retract {
 	opacity: 0;
-}
-
-.go-to {
-	cursor: pointer
 }
 
 .go-to:hover {
