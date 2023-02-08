@@ -2,26 +2,28 @@ const cursorDefault = document.getElementById("cursor-default");
 const cursorPointer = document.getElementById("cursor-pointer");
 const pointedElements = document.querySelectorAll('.pointer');
 
-document.addEventListener("mousemove", e => {
-	cursorDefault.style.top = e.clientY + "px";
-	cursorDefault.style.left = e.clientX + "px";
+if (!/Mobi|Android/i.test(navigator.userAgent)) {
+	document.addEventListener("mousemove", e => {
+		cursorDefault.style.top = e.clientY + "px";
+		cursorDefault.style.left = e.clientX + "px";
 
-	cursorPointer.style.top = e.clientY + "px";
-	cursorPointer.style.left = e.clientX + "px";
-});
+		cursorPointer.style.top = e.clientY + "px";
+		cursorPointer.style.left = e.clientX + "px";
+	});
 
-pointedElements.forEach(element => {
-	element.addEventListener('mouseover', function () {
-		if (!element.classList.contains("active") && !element.parentElement.classList.contains("active")) {
-			cursorPointer.style.opacity = 1;
-			cursorDefault.style.opacity = 0;
-		}
+	pointedElements.forEach(element => {
+		element.addEventListener('mouseover', function () {
+			if (!element.classList.contains("active") && !element.parentElement.classList.contains("active")) {
+				cursorPointer.style.opacity = 1;
+				cursorDefault.style.opacity = 0;
+			}
+		});
+		element.addEventListener('mouseout', function () {
+			cursorPointer.style.opacity = 0;
+			cursorDefault.style.opacity = 1;
+		});
 	});
-	element.addEventListener('mouseout', function () {
-		cursorPointer.style.opacity = 0;
-		cursorDefault.style.opacity = 1;
-	});
-});
+}
 
 //Creative coding section
 
