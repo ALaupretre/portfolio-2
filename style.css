@@ -92,6 +92,10 @@ body {
 	}
 }
 
+p {
+	line-height: 140%;
+}
+
 h1 {
 	margin: var(--margin-l);
 	font-size: 108px;
@@ -275,7 +279,7 @@ img {
 }
 
 #fractal-img-canvas {
-	background: red;
+	background: var(--bg);
 	margin: var(--margin-s);
 	margin-right: var(--margin-l);
 }

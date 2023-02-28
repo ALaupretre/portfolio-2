@@ -31,31 +31,36 @@ const canvasSelectors = document.querySelectorAll('.canvas-selector');
 const canvasTitle = document.querySelector('.canvas-title');
 const canvasDescription = document.querySelector('.canvas-description');
 const canvasImg = document.querySelector('.canvas-img');
+const projects = [];
 
-let preselectedIndex;
 canvasSelectors.forEach((canvasSelector, idx) => {
-	if (canvasSelector.classList.contains('active')) preselectedIndex = idx;
+	const projectIndex = (idx + 1).toString().padStart(2, '0');
+	const projectPath = `projects/${projectIndex}/metadata.json`;
+	const imgSrc = `projects/${projectIndex}/thumbnail.jpeg`;
+	const relativePath = `./${projectIndex}`;
+	fetch(projectPath)
+		.then(response => response.json())
+		.then(data => {
+			projects[idx] = {
+				title: data.title,
+				description: data.description,
+				thumbnail: imgSrc,
+				path: relativePath
+			};
+		});
 });
 
 canvasSelectors.forEach((canvasSelector, idx) => {
 	canvasSelector.addEventListener('click', () => {
 		canvasSelectors.forEach(c => c.classList.remove('active'));
 		canvasSelector.classList.add('active');
-
-		const projectIndex = (idx + 1).toString().padStart(2, '0');
-		const projectPath = `projects/${projectIndex}/metadata.json`;
-		const imgSrc = `projects/${projectIndex}/thumbnail.jpeg`;
-		const relativePath = `./${projectIndex}`;
-		localStorage.setItem('currentCanvas', relativePath);
-		fetch(projectPath)
-			.then(response => response.json())
-			.then(data => {
-				loadProject(data.title, data.description, imgSrc);
-			});
+		const project = projects[idx];
+		if (project) {
+			loadProject(project.title, project.description, project.thumbnail);
+			localStorage.setItem('currentCanvas', project.path);
+		}
 	});
 });
-
-if (preselectedIndex || preselectedIndex === 0) canvasSelectors[preselectedIndex].click();
 
 function loadProject(title, description, thumbnail) {
 	canvasTitle.innerHTML = title;
