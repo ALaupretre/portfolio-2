@@ -300,14 +300,15 @@ img {
 .sequence-title {
 	position: absolute;
 	bottom: var(--margin-s);
-	right: var(--margin-s);
+	right: var(--margin-l);
 	color: var(--bg);
 }
 
 #fractal-img-canvas {
 	background: var(--color4);
 	margin: var(--margin-s);
-	margin-right: var(--margin-l);
+	min-width: 70vh;
+	max-width: 720px;
 }
 
 #fractales-3d .text-content {
@@ -429,10 +430,19 @@ img {
 	canvas {
 		margin: 0 !important;
 		margin: 0;
+		min-width: 0 !important;
 		max-width: 100% !important
 	}
 
 	#header-title {
 		width: 100vw
+	}
+
+	#nav {
+		gap: 1rem
+	}
+
+	.nav-link {
+		border: 2px solid var(--primary);
 	}
 }
