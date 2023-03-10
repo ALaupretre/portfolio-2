@@ -89,7 +89,7 @@ let images = [];
 // Preload all images to improve performance
 for (let i = sequenceStart; i <= sequenceLength; i++) {
 	let img = new Image();
-	img.src = `src/Output041SColored/041SColored000${i.toString().padStart(3, 0)}.jpg`;
+	img.src = `src/Output041SRGreen/041SRGreen000${i.toString().padStart(3, 0)}.jpg`;
 	images.push(img);
 }
 

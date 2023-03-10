@@ -1,9 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Questrial&family=Space+Mono&display=swap');
 
 :root {
-	--bg: #ffffff;
-	--primary: #000000;
-	--secondary: #0011ff;
+	/* --bg: #d4e2d4;
+	--primary: #202020;
+	--secondary: #0011ff; */
+	/* --bg: rgb(219, 215, 206);
+	--primary: #181818;
+	--secondary: #221ee6; */
+	--bg: #eeeeee;
+	--primary: #181818;
+	--secondary: #0063E2;
+	--color4: #006941;
+	--color5: #FFB200;
 	--margin-l: 100px;
 	--margin-s: 40px;
 }
@@ -93,12 +101,8 @@ body {
 }
 
 p {
+	font-family: "Space Mono", sans-serif;
 	line-height: 140%;
-}
-
-h1 {
-	margin: var(--margin-l);
-	font-size: 108px;
 }
 
 h2 {
@@ -112,6 +116,7 @@ a {
 }
 
 ul {
+	font-family: "Space Mono", sans-serif;
 	margin: 2rem 0px;
 	list-style-position: inside;
 	padding-left: 0;
@@ -126,34 +131,6 @@ li {
 	background: var(--bg);
 	width: 100vw;
 	border-top: 2px var(--primary) solid;
-}
-
-@media (max-width: 1250px) {
-	:root {
-		--margin-s: 20px;
-		--margin-l: var(--margin-s)
-	}
-
-	h1 {
-		font-size: 55px
-	}
-
-	.section {
-		flex-direction: column;
-	}
-
-	.img-content {
-		padding: var(--margin-s) !important;
-		border: none !important;
-		max-width: 100% !important;
-	}
-
-	img,
-	canvas {
-		margin: 0 !important;
-		margin: 0;
-		max-width: 100% !important
-	}
 }
 
 .text-content {
@@ -184,6 +161,46 @@ path {
 	stroke: var(--secondary);
 }
 
+/*************** HEADER ******************/
+/*************** HEADER ******************/
+/*************** HEADER ******************/
+
+#header {
+	border-top: none;
+}
+
+#header-title {
+	background-color: var(--secondary);
+	color: var(--bg);
+	padding: var(--margin-l);
+	width: fit-content;
+	border-right: 2px solid var(--primary)
+}
+
+#header h1 {
+	margin: 0;
+	font-size: 108px;
+}
+
+#nav {
+	display: flex;
+	flex-direction: column;
+	margin: var(--margin-l);
+}
+
+.nav-link {
+	margin: 1rem 0px;
+	font-size: 40px;
+	padding: .3rem .6rem;
+	margin: 0;
+	transition: .3s ease
+}
+
+.nav-link:hover {
+	background-color: var(--primary);
+	color: var(--bg);
+}
+
 /*************** CREATIVE CODING ******************/
 /*************** CREATIVE CODING ******************/
 /*************** CREATIVE CODING ******************/
@@ -200,8 +217,8 @@ path {
 }
 
 .canvas-img {
-	max-width: 50vh;
-	margin: var(--margin-l);
+	max-width: 70vh;
+	margin: var(--margin-s)var(--margin-s)var(--margin-s)var(--margin-l);
 }
 
 hr {
@@ -275,11 +292,20 @@ img {
 }
 
 #fractales-3d .img-content {
+	position: relative;
+	background-color: var(--color4);
 	border-left: 2px var(--primary) solid;
 }
 
+.sequence-title {
+	position: absolute;
+	bottom: var(--margin-s);
+	right: var(--margin-s);
+	color: var(--bg);
+}
+
 #fractal-img-canvas {
-	background: var(--bg);
+	background: var(--color4);
 	margin: var(--margin-s);
 	margin-right: var(--margin-l);
 }
@@ -350,6 +376,7 @@ img {
 /*************** FOOTER ******************/
 
 #footer {
+	background-color: var(--color5);
 	border-top: 2px solid var(--primary);
 	padding: var(--margin-s) var(--margin-l) 10vh !important;
 	line-height: 2rem;
@@ -357,13 +384,17 @@ img {
 
 #footer .flex-container {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 	width: 100%;
 
 }
 
+#footer .flex-container .email {
+	font-family: "Space Mono", sans-serif;
+}
+
 .social-media a {
-	color: var(--secondary);
 	padding: .3rem .6rem;
 	transition: .3s ease
 }
@@ -371,4 +402,37 @@ img {
 .social-media a:hover {
 	background-color: var(--primary);
 	color: var(--bg);
+}
+
+
+@media (max-width: 1250px) {
+	:root {
+		--margin-s: 20px;
+		--margin-l: var(--margin-s)
+	}
+
+	h1 {
+		font-size: 55px !important
+	}
+
+	.section {
+		flex-direction: column;
+	}
+
+	.img-content {
+		padding: var(--margin-s) !important;
+		border: none !important;
+		max-width: 100% !important;
+	}
+
+	img,
+	canvas {
+		margin: 0 !important;
+		margin: 0;
+		max-width: 100% !important
+	}
+
+	#header-title {
+		width: 100vw
+	}
 }
