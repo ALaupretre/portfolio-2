@@ -434,15 +434,32 @@ img {
 		max-width: 100% !important
 	}
 
+
+}
+
+@media (max-width: 1400px) {
 	#header-title {
 		width: 100vw
 	}
 
+	#header {
+		flex-direction: column;
+		background-color: var(--secondary);
+		color: var(--bg)
+	}
+
 	#nav {
-		gap: 1rem
+		gap: 1rem;
+		margin-top: var(--margin-s);
 	}
 
 	.nav-link {
-		border: 2px solid var(--primary);
+		color: var(--bg);
+		border: 2px solid var(--bg);
+	}
+
+	.nav-link:hover {
+		background-color: var(--bg);
+		color: var(--primary);
 	}
 }
