@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Questrial&family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@500&family=Space+Mono&display=swap');
 
 :root {
 	/* --bg: #d4e2d4;
@@ -85,7 +85,8 @@ html {
 }
 
 body {
-	font-family: 'Questrial', sans-serif;
+	font-family: 'Jost', sans-serif;
+	line-height: 1.1;
 	background: var(--bg);
 	color: var(--primary);
 	margin: 0;
