@@ -190,6 +190,7 @@ path {
 }
 
 .nav-link {
+	color: var(--secondary);
 	margin: 1rem 0px;
 	font-size: 40px;
 	padding: .3rem .6rem;
@@ -435,7 +436,10 @@ img {
 		max-width: 100% !important
 	}
 
-
+	.nav-link,
+	h2 {
+		font-size: 30px;
+	}
 }
 
 @media (max-width: 1400px) {
