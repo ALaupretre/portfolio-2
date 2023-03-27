@@ -308,7 +308,7 @@ img {
 
 #fractal-img-canvas {
 	background: var(--color4);
-	margin: var(--margin-s);
+	margin: var(--margin-s) var(--margin-l) var(--margin-s)var(--margin-s);
 	min-width: 70vh;
 	max-width: 720px;
 }
@@ -466,5 +466,12 @@ img {
 	.nav-link:hover {
 		background-color: var(--bg);
 		color: var(--primary);
+	}
+}
+
+@media (min-width: 1920px) {
+	:root {
+		--margin-s: 3vw;
+		--margin-l: 6vw
 	}
 }
