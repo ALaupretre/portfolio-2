@@ -1,15 +1,18 @@
 function getBrowser() {
 	const userAgent = navigator.userAgent.toLowerCase();
-	if (userAgent.indexOf("chrome") !== -1) {
-		return "Chrome";
-	} else if (userAgent.indexOf("firefox") !== -1) {
-		return "Firefox";
-	} else if (userAgent.indexOf("safari") !== -1) {
-		return "Safari";
-	} else {
-		return "Unknown";
+
+	switch (true) {
+		case userAgent.indexOf('chrome') !== -1:
+			return 'Chrome';
+		case userAgent.indexOf('firefox') !== -1:
+			return 'Firefox';
+		case userAgent.indexOf('safari') !== -1:
+			return 'Safari';
+		default:
+			return 'Unknown';
 	}
 }
+
 
 if (getBrowser() == "Firefox") {
 	palette = ['#000000', '#757272', '#6e5c35', '#452d59', '#336a7a'];

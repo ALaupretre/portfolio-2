@@ -47,6 +47,10 @@ canvasSelectors.forEach((canvasSelector, idx) => {
 				thumbnail: imgSrc,
 				path: relativePath
 			};
+			if (idx === 0) {
+				localStorage.setItem('currentCanvas', relativePath);
+				loadProject(data.title, data.description, imgSrc);
+			}
 		});
 });
 
@@ -67,7 +71,6 @@ function loadProject(title, description, thumbnail) {
 	canvasDescription.innerHTML = description;
 	canvasImg.src = thumbnail;
 }
-
 //fractale 3d section
 const panelHeadings = document.querySelectorAll(".panel-heading");
 
@@ -112,7 +115,6 @@ function drawImage() {
 	if (imgIndex !== currentImageIndex) {
 		currentImageIndex = imgIndex;
 		context.drawImage(images[imgIndex - sequenceStart], 0, 0, canvas.width, canvas.height);
-		console.log("img drawn");
 	}
 	requestAnimationFrame(drawImage);
 }
